@@ -24,9 +24,9 @@ catButton.addEventListener('click', () => {
 });
 
 surprise.addEventListener('click', () => {
-  Promise.any([
-    fetch('https://aws.random.cat/meow'),
+  Promise.race([
     fetch('https://dog.ceo/api/breeds/image/random'),
+    fetch('https://aws.random.cat/meow'),
   ])
   .then((response) => response.json())
   .then((data) => {
